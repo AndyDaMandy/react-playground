@@ -10,6 +10,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <AboutPage />
+        <Add />
         <MyButton />
         <a
           className="App-link"
@@ -25,10 +26,21 @@ function App() {
 }
 
 function MyButton(){
+  function clicker() {
+    alert('You clicked me!');
+  }
   return (
-    <button>Testing this button</button>
+    <button onClick={clicker}>Testing this button</button>
   );
 }
+
+const products = [
+  { title: 'Cabbage', id: 1 },
+  { title: 'Garlic', id: 2 },
+  { title: 'Apple', id: 3 },
+];
+
+
 
 function AboutPage() {
   return (
@@ -36,6 +48,17 @@ function AboutPage() {
       <h1 className="blue">About</h1>
       <p>Hello there.<br />How do you do?</p>
     </>
+  );
+}
+function Add(){
+  const listItems = products.map(product =>
+    <li key={product.id}>
+      {product.title}
+    </li>
+  );
+  
+  return (
+    <ul>{listItems}</ul>
   );
 }
 
